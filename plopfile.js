@@ -38,6 +38,7 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "./env/config.env",
+        templateFile: "plop_templates/config.hbs",
       },
     ], // array of actions
   });
