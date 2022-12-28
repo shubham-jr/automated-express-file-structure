@@ -4,7 +4,7 @@ const toJSON = require('../utils/toJSON');
 
 const { ObjectId } = mongoose.Types;
 
-const {{name}}Schema = mongoose.Schema(
+const trialSchema = mongoose.Schema(
   {
 
     trial: {
@@ -18,8 +18,8 @@ const {{name}}Schema = mongoose.Schema(
   }
 );
 
-toJSON({{name}}Schema);
+toJSON(trialSchema);
 
-const {{camel name}} = mongoose.model('{{camel name}}', {{name}}Schema);
+const Trial = mongoose.model('Trial', trialSchema);
 
-module.exports = {{camel name}};
+module.exports = Trial;

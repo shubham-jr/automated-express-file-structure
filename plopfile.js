@@ -11,53 +11,17 @@ module.exports = (plop) => {
     actions: [
       {
         type: "add",
-        path: "./src",
-      },
-      {
-        type: "add",
-        path: "./src/controllers",
-      },
-      {
-        type: "add",
-        path: "./src/files",
-      },
-      {
-        type: "add",
-        path: "./src/middlewares",
-      },
-      {
-        type: "add",
-        path: "./src/models",
-      },
-      {
-        type: "add",
-        path: "./src/routes",
-      },
-      {
-        type: "add",
-        path: "./src/services",
-      },
-      {
-        type: "add",
-        path: "./src/utils",
-      },
-      {
-        type: "add",
-        path: "./src/validations",
-      },
-      {
-        type: "add",
-        path: "./app.js",
+        path: "./src/app.js",
         templateFile: "plop_templates/app.hbs",
       },
       {
         type: "add",
-        path: "./index.js",
+        path: "./src/index.js",
         templateFile: "plop_templates/index.hbs",
       },
       {
         type: "add",
-        path: "./.env",
+        path: "./src/.env",
         templateFile: "plop_templates/config.hbs",
       },
       {

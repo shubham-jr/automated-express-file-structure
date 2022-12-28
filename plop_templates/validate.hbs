@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { objectId } = require('./custom.validation');
+// const { objectId } = require('./custom.validation');
 
 const create{{camel name}} = {
   body: Joi.object({
@@ -7,4 +7,10 @@ const create{{camel name}} = {
   })
 };
 
-module.exports = { create{{camel name}} };
+const update{{camel name}} = {
+  body: Joi.object({
+   
+  })
+};
+
+module.exports = { create{{camel name}} , update{{camel name}} };
