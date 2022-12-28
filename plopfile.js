@@ -1,52 +1,6 @@
 module.exports = (plop) => {
-  // create your generators here
-  plop.setGenerator("init", {
-    description: "Setting up the express project",
-    prompts: [
-      {
-        type: "input",
-        name: "name",
-        message: "Create a boiler plate for your express app ? ",
-      },
-    ], // array of inquirer prompts
-    actions: [
-      {
-        type: "add",
-        path: "./index.js",
-        templateFile: "plop_templates/index.hbs",
-      },
-      {
-        type: "add",
-        path: "./app.js",
-        templateFile: "plop_templates/app.hbs",
-      },
-      {
-        type: "add",
-        path: "./utils/AppError.js",
-        templateFile: "plop_templates/appError.hbs",
-      },
-      {
-        type: "add",
-        path: "./utils/catchAsync.js",
-        templateFile: "plop_templates/catchAsync.hbs",
-      },
-      {
-        type: "add",
-        path: "./controllers/errorController.js",
-        templateFile: "plop_templates/errorController.hbs",
-      },
-      {
-        type: "add",
-        path: "./env/config.env",
-        templateFile: "plop_templates/config.hbs",
-      },
-    ], // array of actions
-  });
-
-  // -------------------Second Generator----------------------
-
   plop.setGenerator("model", {
-    description: "plop generating models with route + controller",
+    description: "plop generating models with route + controller + service",
     prompts: [
       {
         type: "input",
@@ -57,31 +11,151 @@ module.exports = (plop) => {
     actions: [
       {
         type: "add",
-        path: "./models/{{name}}Model.js",
+        path: "./src/models/{{name}}.model.js",
         templateFile: "plop_templates/schema.hbs",
       },
       {
         type: "add",
-        path: "./controllers/{{name}}Controllers.js",
-        templateFile: "plop_templates/controllers.hbs",
+        path: "./src/controllers/{{name}}.controller.js",
+        templateFile: "plop_templates/controller.hbs",
       },
       {
         type: "add",
-        path: "./routes/{{name}}Routes.js",
+        path: "./src/routes/{{name}}.route.js",
         templateFile: "plop_templates/routes.hbs",
       },
       {
-        type: "append",
-        path: "./app.js",
-        templateFile: "plop_templates/routesImport.hbs",
-        pattern: "Requiring_Routes",
+        type: "add",
+        path: "./src/services/{{name}}.service.js",
+        templateFile: "plop_templates/service.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/validations/{{name}}.validation.js",
+        templateFile: "plop_templates/validate.hbs",
       },
       {
         type: "append",
-        path: "./app.js",
-        templateFile: "plop_templates/useRouteInApp.hbs",
-        pattern: "Using_Routes",
+        path: "./src/routes/index.js",
+        templateFile: "plop_templates/appendRoute.hbs",
+        pattern: "Routes_Appending",
+      },
+      {
+        type: "append",
+        path: "./src/routes/index.js",
+        templateFile: "plop_templates/appendRequireRouteFile.hbs",
+        pattern: "File_Appending",
       },
     ],
   });
+  plop.setGenerator("init", {
+    description:
+      "auto generating model with route + controller + service + validator",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "press any key to continue...",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "./src",
+      },
+      {
+        type: "add",
+        path: "./src/controllers",
+      },
+      {
+        type: "add",
+        path: "./src/files",
+      },
+      {
+        type: "add",
+        path: "./src/middlewares",
+      },
+      {
+        type: "add",
+        path: "./src/models",
+      },
+      {
+        type: "add",
+        path: "./src/routes",
+      },
+      {
+        type: "add",
+        path: "./src/services",
+      },
+      {
+        type: "add",
+        path: "./src/utils",
+      },
+      {
+        type: "add",
+        path: "./src/validations",
+      },
+      {
+        type: "add",
+        path: "./app.js",
+        templateFile: "plop_templates/app.hbs",
+      },
+      {
+        type: "add",
+        path: "./index.js",
+        templateFile: "plop_templates/index.hbs",
+      },
+      {
+        type: "add",
+        path: "./.env",
+        templateFile: "plop_templates/config.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/routes/index.js",
+        templateFile: "plop_templates/routeIndex.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/middlewares/error.js",
+        templateFile: "plop_templates/error.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/middlewares/validate.js",
+        templateFile: "plop_templates/validateMiddleware.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/utils/ApiError.js",
+        templateFile: "plop_templates/apiError.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/utils/config.js",
+        templateFile: "plop_templates/utilsConfig.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/utils/deleteFile.js",
+        templateFile: "plop_templates/deleteFile.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/utils/fileUpload.js",
+        templateFile: "plop_templates/fileUpload.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/utils/logger.js",
+        templateFile: "plop_templates/logger.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/utils/toJSON.js",
+        templateFile: "plop_templates/toJSON.hbs",
+      },
+    ],
+  });
+  plop.setHelper("camel", (txt) => txt.charAt(0).toUpperCase() + txt.slice(1));
 };

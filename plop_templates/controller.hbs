@@ -1,0 +1,53 @@
+const httpStatus = require('http-status');
+const validateSchema = require('./../validations/schema.validation');
+const ApiError = require('./../utils/ApiError');
+require('express-async-errors');
+
+const {{name}}Validation = require('../validations/{{name}}.validation');
+
+const {{name}}Service = require('../services/{{name}}.service');
+
+const create{{camel name}} = async (req, res, next) => {
+  const err = validateSchema(req, {{name}}Validation.create{{camel name}});
+  if (err) return next(new ApiError(404, `${err.details[0].message}`));
+
+  const {} = req.body;
+
+  const created{{camel name}} = await {{name}}Service.create{{camel name}}({
+   
+  });
+  res.status(httpStatus.CREATED).send({ created{{camel name}} });
+};
+
+const getAll{{camel name}} = async (req, res, next) => {
+  const getAll{{camel name}} = await {{name}}Service.getAll{{camel name}}();
+  res.status(httpStatus.CREATED).send({ total{{camel name}}: getAll{{camel name}}.length, getAll{{camel name}} });
+};
+
+const get{{camel name}} = async (req, res, next) => {
+  const id = req.params.id;
+  const get{{camel name}} = await {{name}}Service.get{{camel name}}({ id });
+  res.status(httpStatus.CREATED).send({ get{{camel name}} });
+};
+
+const update{{camel name}} = async (req, res, next) => {
+
+  const id = req.params.id;
+
+  const updated{{camel name}} = await {{name}}Service.update{{camel name}}({ id, body:req.body });
+  res.status(httpStatus.CREATED).send({ updated{{camel name}} });
+};
+
+const delete{{camel name}} = async (req, res, next) => {
+
+  const { } = req.body;
+
+  const id = req.params.id;
+
+  await {{name}}Service.delete{{camel name}}({ id });
+  res.status(httpStatus.CREATED).send({ });
+};
+
+
+
+module.exports = { create{{camel name}}, getAll{{camel name}}, update{{camel name}}, get{{camel name}},delete{{camel name}} };

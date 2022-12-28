@@ -1,5 +1,12 @@
-const express = require("express");
-const Router = express.Router();
-const {{name}}Controllers = require("../controllers/{{name}}Controllers");
+const express = require('express');
+const router = express.Router();
 
-module.exports = Router;
+const {{name}}Controller = require('../controllers/{{name}}.controller');
+
+router.post('/register', {{name}}Controller.create{{camel name}});
+router.get('/transfered', {{name}}Controller.getAll{{camel name}});
+router.get('/transfered/:id', {{name}}Controller.get{{camel name}});
+router.patch('/status/:id', {{name}}Controller.update{{camel name}});
+router.delete('/delete/:id', {{name}}Controller.delete{{camel name}});
+
+module.exports = router;

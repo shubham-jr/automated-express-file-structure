@@ -1,0 +1,43 @@
+const { ObjectId } = require('mongoose').Types;
+require('express-async-errors');
+const {{name}}Model = require('./../models/{{name}}.model');
+
+const create{{camel name}} = async ({ }) => {
+  const created{{camel name}} = await {{name}}Model.create({
+   
+  });
+
+  return created{{camel name}};
+};
+
+const getAll{{camel name}} = async () => {
+  const getAll{{camel name}} = await {{name}}Model.find();
+
+  return getAll{{camel name}};
+};
+const get{{camel name}} = async ({ id }) => {
+  const getAll{{camel name}} = await {{name}}Model.findById(id);
+
+  return getAll{{camel name}};
+};
+const update{{camel name}} = async ({ id,body}) => {
+  const updated{{camel name}} = await {{name}}Model.findByIdAndUpdate(
+    id,
+    body,
+    { new: true }
+  );
+
+  return updated{{camel name}};
+};
+
+const delete{{camel name}} = async ({ id,body}) => {
+  await {{name}}Model.findByIdAndDelete(id);
+};
+
+module.exports = {
+  create{{camel name}},
+  getAll{{camel name}},
+  get{{camel name}},
+  update{{camel name}},
+  delete{{camel name}}
+};

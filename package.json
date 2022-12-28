@@ -1,12 +1,38 @@
 {
-  "name": "plop.js",
-  "version": "0.0.0",
-  "private": true,
+  "name": "foodlert-backend",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "jr": "plop"
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js | pino-pretty",
+    "gen": "plop",
+    "start": "node src/index.js"
   },
+  "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "date-fns": "^2.29.1",
+    "dayjs": "^1.11.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "helmet": "^5.1.1",
+    "http-status": "^1.5.2",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.7",
+    "otp-generator": "^4.0.0",
+    "pino": "^8.4.0",
+    "pino-http": "^8.2.0",
+    "pino-pretty": "^9.1.1",
     "plop": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

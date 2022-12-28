@@ -1,7 +1,25 @@
-const mongoose = require("mongoose");
-const {{name}}Schema = new mongoose.Schema({
+const mongoose = require('mongoose');
 
-});
+const toJSON = require('../utils/toJSON');
 
-const {{name}}Model = mongoose.model("{{name}}", {{name}}Schema);
-module.exports = {{name}}Model;
+const { ObjectId } = mongoose.Types;
+
+const {{name}}Schema = mongoose.Schema(
+  {
+
+    : {
+      type: String,
+      required: true
+    },
+
+  },
+  {
+    timestamps: true
+  }
+);
+
+toJSON({{name}}Schema);
+
+const {{camel name}} = mongoose.model('{{camel name}}', {{name}}Schema);
+
+module.exports = {{camel name}};
