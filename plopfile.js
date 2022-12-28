@@ -1,53 +1,4 @@
 module.exports = (plop) => {
-  plop.setGenerator("model", {
-    description: "plop generating models with route + controller + service",
-    prompts: [
-      {
-        type: "input",
-        name: "name",
-        message: "type name of model",
-      },
-    ],
-    actions: [
-      {
-        type: "add",
-        path: "./src/models/{{name}}.model.js",
-        templateFile: "plop_templates/schema.hbs",
-      },
-      {
-        type: "add",
-        path: "./src/controllers/{{name}}.controller.js",
-        templateFile: "plop_templates/controller.hbs",
-      },
-      {
-        type: "add",
-        path: "./src/routes/{{name}}.route.js",
-        templateFile: "plop_templates/routes.hbs",
-      },
-      {
-        type: "add",
-        path: "./src/services/{{name}}.service.js",
-        templateFile: "plop_templates/service.hbs",
-      },
-      {
-        type: "add",
-        path: "./src/validations/{{name}}.validation.js",
-        templateFile: "plop_templates/validate.hbs",
-      },
-      {
-        type: "append",
-        path: "./src/routes/index.js",
-        templateFile: "plop_templates/appendRoute.hbs",
-        pattern: "Routes_Appending",
-      },
-      {
-        type: "append",
-        path: "./src/routes/index.js",
-        templateFile: "plop_templates/appendRequireRouteFile.hbs",
-        pattern: "File_Appending",
-      },
-    ],
-  });
   plop.setGenerator("init", {
     description:
       "auto generating model with route + controller + service + validator",
@@ -154,6 +105,55 @@ module.exports = (plop) => {
         type: "add",
         path: "./src/utils/toJSON.js",
         templateFile: "plop_templates/toJSON.hbs",
+      },
+    ],
+  });
+  plop.setGenerator("model", {
+    description: "plop generating models with route + controller + service",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "type name of model",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "./src/models/{{name}}.model.js",
+        templateFile: "plop_templates/schema.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/controllers/{{name}}.controller.js",
+        templateFile: "plop_templates/controller.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/routes/{{name}}.route.js",
+        templateFile: "plop_templates/routes.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/services/{{name}}.service.js",
+        templateFile: "plop_templates/service.hbs",
+      },
+      {
+        type: "add",
+        path: "./src/validations/{{name}}.validation.js",
+        templateFile: "plop_templates/validate.hbs",
+      },
+      {
+        type: "append",
+        path: "./src/routes/index.js",
+        templateFile: "plop_templates/appendRoute.hbs",
+        pattern: "Routes_Appending",
+      },
+      {
+        type: "append",
+        path: "./src/routes/index.js",
+        templateFile: "plop_templates/appendRequireRouteFile.hbs",
+        pattern: "File_Appending",
       },
     ],
   });
