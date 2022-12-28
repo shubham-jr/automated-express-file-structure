@@ -1,7 +1,6 @@
 module.exports = (plop) => {
   plop.setGenerator("init", {
-    description:
-      "auto generating model with route + controller + service + validator",
+    description: "initial setup",
     prompts: [
       {
         type: "input",
@@ -109,7 +108,8 @@ module.exports = (plop) => {
     ],
   });
   plop.setGenerator("model", {
-    description: "plop generating models with route + controller + service",
+    description:
+      "generating models with route + controller + service + validator",
     prompts: [
       {
         type: "input",
