@@ -1,6 +1,5 @@
-const { ObjectId } = require('mongoose').Types;
 require('express-async-errors');
-const {{name}}Model = require('./../models/{{name}}.model');
+const {{name}}Model = require('../models/{{name}}.model');
 
 const create{{camel name}} = async ({ }) => {
   const created{{camel name}} = await {{name}}Model.create({
@@ -10,16 +9,16 @@ const create{{camel name}} = async ({ }) => {
   return created{{camel name}};
 };
 
-const getAll{{camel name}} = async () => {
-  const getAll{{camel name}} = await {{name}}Model.find();
+const getAll{{camel name}} = async ({query}) => {
+  const {{name}} = await {{name}}Model.find({query});
 
-  return getAll{{camel name}};
+  return {{name}};
 };
 
 const get{{camel name}} = async ({ id }) => {
-  const getAll{{camel name}} = await {{name}}Model.findById(id);
+  const {{name}} = await {{name}}Model.findById(id);
 
-  return getAll{{camel name}};
+  return {{name}};
 };
 
 const update{{camel name}} = async ({ id,body}) => {
@@ -32,7 +31,7 @@ const update{{camel name}} = async ({ id,body}) => {
   return updated{{camel name}};
 };
 
-const delete{{camel name}} = async ({ id,body}) => {
+const delete{{camel name}} = async ({ id}) => {
   await {{name}}Model.findByIdAndDelete(id);
 };
 

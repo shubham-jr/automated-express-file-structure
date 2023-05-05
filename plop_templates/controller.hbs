@@ -1,13 +1,13 @@
 const httpStatus = require('http-status');
-const validateSchema = require("../middlewares/validate.js");
-const ApiError = require('./../utils/ApiError');
+const validateSchema = require("../middlewares/validate");
+const ApiError = require('../utils/ApiError');
 require('express-async-errors');
 
 const {{name}}Validation = require('../validations/{{name}}.validation');
 
 const {{name}}Service = require('../services/{{name}}.service');
 
-const create{{camel name}} = async (req, res, next) => {
+const create{{camel name}} = async (req, res) => {
 
   validateSchema(req, {{name}}Validation.create{{camel name}});
 
@@ -19,36 +19,38 @@ const create{{camel name}} = async (req, res, next) => {
   res.status(httpStatus.CREATED).send({ created{{camel name}} });
 };
 
-const getAll{{camel name}} = async (req, res, next) => {
+const getAll{{camel name}} = async (req, res) => {
 
-  const getAll{{camel name}} = await {{name}}Service.getAll{{camel name}}();
+  const query = req.query.type?.length ? { type: req.query.type } : {};
 
-  res.status(httpStatus.CREATED).send({ total{{camel name}}: getAll{{camel name}}.length, getAll{{camel name}} });
+  const {{name}}s = await {{name}}Service.getAll{{camel name}}({query});
+
+  res.status(httpStatus.CREATED).send({ total{{camel name}}: {{name}}.length, getAll{{camel name}} });
 };
 
-const get{{camel name}} = async (req, res, next) => {
+const get{{camel name}} = async (req, res) => {
 
-  const id = req.params.id;
+  const {id} = req.params;
 
-  const get{{camel name}} = await {{name}}Service.get{{camel name}}({ id });
+  const {{name}} = await {{name}}Service.get{{camel name}}({ id });
 
-  res.status(httpStatus.CREATED).send({ get{{camel name}} });
+  res.status(httpStatus.CREATED).send({ {{name}} });
 };
 
-const update{{camel name}} = async (req, res, next) => {
+const update{{camel name}} = async (req, res) => {
+
+  const {id} = req.params;
 
   // validateSchema(req, {{name}}Validation.update{{camel name}});
 
-  const id = req.params.id;
+  const updated{{name}} = await {{name}}Service.update{{camel name}}({ id, body:req.body });
 
-  const updated{{camel name}} = await {{name}}Service.update{{camel name}}({ id, body:req.body });
-
-  res.status(httpStatus.CREATED).send({ updated{{camel name}} });
+  res.status(httpStatus.CREATED).send({ updated{{name}} });
 };
 
-const delete{{camel name}} = async (req, res, next) => {
+const delete{{camel name}} = async (req, res) => {
 
-  const id = req.params.id;
+  const {id} = req.params;
 
   await {{name}}Service.delete{{camel name}}({ id });
 
